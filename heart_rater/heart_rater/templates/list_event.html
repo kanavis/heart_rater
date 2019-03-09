@@ -1,0 +1,17 @@
+{% extends "list_base.html" %}
+
+{% block thead %}
+  <th>Time</th>
+  <th>Event</th>
+{% endblock %}
+
+{% block tbody %}
+  {% for rec in object_list %}
+    <tr>
+      <td>{{ rec.time | time }}</td>
+      <td>{{ rec.event }}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="4">No records</td></tr>
+  {% endfor %}
+{% endblock %}

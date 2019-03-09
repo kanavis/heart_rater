@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <p class="bg-success text-light p-sm-1 mb-sm-1">
+    {{ request.GET.rec }} saved
+  </p>
+  <p>
+    <a href="/{{ request.GET.ret }}">Back</a>
+  </p>
+{% endblock %}
