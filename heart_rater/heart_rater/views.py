@@ -8,7 +8,7 @@ from django.views.generic.edit import CreateView
 from heart_rater.models import PressureRecord, EventRecord
 
 
-class CreateWithUserView(CreateView):
+class CreateWithUserView(LoginRequiredMixin, CreateView):
     """
     View class: CreateView adding .user field
     """
@@ -18,7 +18,7 @@ class CreateWithUserView(CreateView):
         return CreateView.form_valid(self, form)
 
 
-class AddPressureRecordView(CreateWithUserView, LoginRequiredMixin):
+class AddPressureRecordView(CreateWithUserView):
     """
     Add pressure record view
     """
@@ -53,7 +53,7 @@ class EventListView(ListView):
     template_name = "list_event.html"
 
 
-class AddEventRecordView(CreateWithUserView, LoginRequiredMixin):
+class AddEventRecordView(CreateWithUserView):
     """
     Add event record view
     """
@@ -63,9 +63,9 @@ class AddEventRecordView(CreateWithUserView, LoginRequiredMixin):
     success_url = '/ok?rec=Event&ret=event'
 
 
-class OkView(TemplateView):
+class OkView(TemplateView, LoginRequiredMixin):
     template_name = "ok.html"
 
 
-class ConstructionView(TemplateView):
+class ConstructionView(TemplateView, LoginRequiredMixin):
     template_name = "construction.html"
